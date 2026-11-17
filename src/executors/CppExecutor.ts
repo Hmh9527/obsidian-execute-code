@@ -9,6 +9,9 @@ export default class CppExecutor extends ClingExecutor {
 	}
 	
 	override run(codeBlockContent: string, outputter: Outputter, cmd: string, cmdArgs: string, ext: string) {
-		return super.run(codeBlockContent, outputter, cmd, `-std=${this.settings.clingStd} ${cmdArgs}`, "cpp");
+		const std = this.settings.clingStd;
+		const stdArg = std && std !== "none" ? `-std=${std}` : "";
+		const args = [stdArg, this.settings.cppArgs].filter(a => a && a.trim()).join(" ");
+		return super.run(codeBlockContent, outputter, cmd, args, "cpp");
 	}
 }

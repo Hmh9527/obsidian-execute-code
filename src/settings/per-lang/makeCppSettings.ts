@@ -25,8 +25,10 @@ export default (tab: SettingsTab, containerEl: HTMLElement) => {
             }));
     new Setting(containerEl)
         .setName('Cling std')
+        .setDesc('Select "None" to omit the -std flag (e.g. when using ROOT\'s root.exe instead of cling).')
         .addDropdown(dropdown => dropdown
-			.addOption('c++98', 'C++ 98')
+            .addOption('none', 'None (no -std flag)')
+            .addOption('c++98', 'C++ 98')
             .addOption('c++11', 'C++ 11')
             .addOption('c++14', 'C++ 14')
             .addOption('c++17', 'C++ 17')

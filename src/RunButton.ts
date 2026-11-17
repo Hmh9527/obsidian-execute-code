@@ -46,7 +46,7 @@ async function handleExecution(block: CodeBlockContext) {
         case "shell": return runCode(s.shellPath, s.shellArgs, s.shellFileExtension, block, { shell: true });
         case "batch": return runCode(s.batchPath, s.batchArgs, s.batchFileExtension, block, { shell: true });
         case "powershell": return runCode(s.powershellPath, s.powershellArgs, s.powershellFileExtension, block, { shell: true });
-        case "cpp": return runCode(s.clingPath, `-std=${s.clingStd} ${s.clingArgs}`, s.cppFileExtension, block);
+        case "cpp": return runCode(s.clingPath, s.cppArgs, s.cppFileExtension, block);
         case "prolog":
             runCode("", "", "", block);
             button.className = buttonClass;
